@@ -16,12 +16,12 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-- Denis Maggiorotto <denis.maggiorotto@sunnyvale.it>
+- Denis Maggiorotto (Sunnyvale S.r.l.) <denis.maggiorotto@sunnyvale.it>
 
 
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
-description: your collection description
+description: An Ansible collection useful to manage Shelly devices
 
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
