@@ -1,2 +1,5 @@
 **/__pycache__
 **/shelly_inventory_plugin.yaml
+**/*.drawio.*
+**/*.tar.gz
+**/*.tgz

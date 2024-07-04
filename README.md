@@ -28,6 +28,10 @@ $ rm -rf ~/.ansible/collections/ansible_collections/denismaggior8/shelly_collect
 
 ## Use the dynamic inventory plugin 
 
+The **shelly_inventory_plugin** is used to populate a dynamic Ansible inventory getting data from Shelly Cloud. All devices, will be managed by Ansible on the local LAN.
+
+![](img/inv_plugin_diag.png)
+
 Verify if the inventory plugin is installed:
 
 ```console
