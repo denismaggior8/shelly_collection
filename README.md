@@ -1,13 +1,20 @@
 # Ansible Collection - denismaggior8.shelly_collection
 
-To install collection from this git repo:
+## Prerequisites
+
+- ansible core 2.17.0
+- python 3.11.0
+
+# Installation and removal
+
+To install this collection from its GitHub repo:
 
 ```console
 $ git clone https://github.com/denismaggior8/shelly_collection
 $ ansible-galaxy collection install shelly_collection
 ```
 
-To uninstall the collection:
+To uninstall this collection:
 
 ```console
 $ rm -rf ~/.ansible/collections/ansible_collections/denismaggior8/shelly_collection/
@@ -38,4 +45,4 @@ Test the inventory plugin:
 $ ansible-inventory --inventory $PWD/shelly_inventory_plugin.yaml --list -v -v -v
 ```
 
-An inventory JSON file containing all your Shelly devices should appear.
+An inventory JSON file containing all your Shelly devices (grouped by category, type, room_id, etc) should appear.
