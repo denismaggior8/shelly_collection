@@ -3,7 +3,7 @@ from ansible.plugins.inventory import AnsibleError
 import requests
 
 DOCUMENTATION = r'''
-        name: shelly_inventory_plugin
+        name: denismaggior8.shelly_collection.shelly_inventory_plugin
         plugin_type: inventory
         short_description: Returns a dynamic host inventory from Shelly Cloud
         description: Returns a dynamic host inventory using Shelly Cloud REST API
@@ -11,7 +11,7 @@ DOCUMENTATION = r'''
             plugin:
                 description: Name of the plugin
                 required: true
-                choices: ['shelly_inventory_plugin']
+                choices: ['denismaggior8.shelly_collection.shelly_inventory_plugin']
             auth_key:
                 description: Shelly Cloud auth key
                 required: true
@@ -22,7 +22,7 @@ DOCUMENTATION = r'''
 
 class InventoryModule(BaseInventoryPlugin):
 
-    NAME = 'shelly_inventory_plugin'
+    NAME = 'denismaggior8.shelly_collection.shelly_inventory_plugin'
 
     def __init__(self):
         super(InventoryModule, self).__init__()

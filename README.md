@@ -33,7 +33,7 @@ Create the plugin configuration file (make sure you substitute the placeholders 
 ```console
 $ cat << 'EOF' > shelly_inventory_plugin.yaml
 ---
-plugin: shelly_inventory_plugin
+plugin: denismaggior8.shelly_collection.shelly_inventory_plugin
 auth_key: <YOUR SHELLY CLOUD AUTHENTICATION KEY>
 url_prefix: <YOUR SHELLY CLOUD REST API PREFIX (i.e. shelly-6-eu)>
 EOF 
