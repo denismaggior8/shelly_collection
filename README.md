@@ -20,7 +20,7 @@ To uninstall this collection:
 $ rm -rf ~/.ansible/collections/ansible_collections/denismaggior8/shelly_collection/
 ```
 
-## Inventorty plugin 
+## Inventory plugin 
 
 Verify if the inventory plugin is installed:
 
