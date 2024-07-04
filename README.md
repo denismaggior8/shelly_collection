@@ -5,7 +5,7 @@
 - ansible core 2.17.0
 - python 3.11.0
 
-# Installation and removal
+# Collection installation and removal
 
 To install this collection (latest version) from Ansible Galaxy:
 
@@ -26,7 +26,7 @@ To uninstall this collection:
 $ rm -rf ~/.ansible/collections/ansible_collections/denismaggior8/shelly_collection/
 ```
 
-## Inventory plugin 
+## Use the dynamic inventory plugin 
 
 Verify if the inventory plugin is installed:
 
@@ -58,4 +58,4 @@ Test the inventory plugin:
 $ ansible-inventory --inventory $PWD/shelly_inventory_plugin.yaml --list -v -v -v
 ```
 
-An inventory JSON file containing all your Shelly devices (grouped by category, type, room_id, etc) should appear.
+An inventory JSON document containing all your Shelly devices (grouped by category, type, room_id, etc) should appear.
