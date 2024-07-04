@@ -13,7 +13,7 @@ To install this collection (latest version) from Ansible Galaxy:
 $ ansible-galaxy collection install denismaggior8.shelly_collection
 ```
 
-To install this collection from its GitHub repo:
+To install this collection from its GitHub repo (main branch):
 
 ```console
 $ git clone https://github.com/denismaggior8/shelly_collection
