@@ -63,3 +63,7 @@ $ ansible-inventory --inventory $PWD/shelly_inventory_plugin.yaml --list -v -v -
 ```
 
 An inventory JSON document containing all your Shelly devices (grouped by category, type, room_id, etc) should appear.
+
+## Support
+
+Found it useful/funny/educational? Please consider to [![Buy Me a Coffee](https://img.shields.io/badge/buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/denismaggior8)
