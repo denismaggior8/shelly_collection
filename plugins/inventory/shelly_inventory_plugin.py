@@ -1,6 +1,7 @@
 from ansible.plugins.inventory import BaseInventoryPlugin
 from ansible.plugins.inventory import AnsibleError
 import requests
+import re
 
 DOCUMENTATION = r'''
         name: denismaggior8.shelly_collection.shelly_inventory_plugin
@@ -61,17 +62,19 @@ class InventoryModule(BaseInventoryPlugin):
             devices = response['data']['devices']
             for key in devices.keys():
                 # Creating groups
-                self.inventory.add_group("type.{}".format(devices[key]['type']).lower())
-                self.inventory.add_group("gen.{}".format(devices[key]['gen']))
-                self.inventory.add_group("category.{}".format(devices[key]['category']))
-                self.inventory.add_group("cloud_online.{}".format(devices[key]['cloud_online']).lower())
-                self.inventory.add_group("room_id.{}".format(devices[key]['room_id']).lower())
+                self.inventory.add_group(re.sub(r"[-.]", "", "type_{}".format(devices[key]['type']).lower()))
+                self.inventory.add_group(re.sub(r"[-.]", "", "gen_{}".format(devices[key]['gen'])))
+                self.inventory.add_group(re.sub(r"[-.]", "", "category_{}".format(devices[key]['category'])))
+                self.inventory.add_group("cloud_online_{}".format(devices[key].get('cloud_online', 'na')).lower())
+                self.inventory.add_group(re.sub(r"[-.]", "", "room_id_{}".format(devices[key]['room_id']).lower()))
 
                 # Assigning hosts to groups
-                self.inventory.add_host(host=devices[key]['ip'],group="type.{}".format(devices[key]['type']).lower())
-                self.inventory.add_host(host=devices[key]['ip'],group="gen.{}".format(devices[key]['gen']))
-                self.inventory.add_host(host=devices[key]['ip'],group="cloud_online.{}".format(devices[key]['cloud_online']).lower())
-                self.inventory.add_host(host=devices[key]['ip'],group="room_id.{}".format(devices[key]['room_id']).lower())
+                if(isinstance(devices[key].get('ip'), str)):
+                    self.inventory.add_host(host=devices[key]['ip'],group=re.sub(r"[-.]", "","type_{}".format(devices[key]['type']).lower()))
+                    self.inventory.add_host(host=devices[key]['ip'],group=re.sub(r"[-.]", "","gen_{}".format(devices[key]['gen'])))
+                    self.inventory.add_host(host=devices[key]['ip'],group="cloud_online_{}".format(devices[key].get('cloud_online', 'na')).lower())
+                    self.inventory.add_host(host=devices[key]['ip'],group=re.sub(r"[-.]", "","room_id_{}".format(devices[key]['room_id']).lower()))
+                else:
+                    AnsibleError("The entry '{}' does not have an ip".format(key))
         else:
             raise AnsibleError('The response from Shelly Cloud is not ok, unable to add hosts into inventory...')
-        
