@@ -1,6 +1,8 @@
 from ansible.plugins.inventory import BaseInventoryPlugin
 from ansible.plugins.inventory import AnsibleError
+from ansible.utils.display import Display
 import requests
+import json
 import re
 
 DOCUMENTATION = r'''
@@ -30,6 +32,7 @@ class InventoryModule(BaseInventoryPlugin):
         self.plugin = None
         self.auth_key = None
         self.url_prefix = None
+        self.display = Display()
 
     def verify_file(self, path: str):
         if super(InventoryModule, self).verify_file(path):
@@ -75,6 +78,8 @@ class InventoryModule(BaseInventoryPlugin):
                     self.inventory.add_host(host=devices[key]['ip'],group="cloud_online_{}".format(devices[key].get('cloud_online', 'na')).lower())
                     self.inventory.add_host(host=devices[key]['ip'],group=re.sub(r"[-.]", "","room_id_{}".format(devices[key]['room_id']).lower()))
                 else:
-                    AnsibleError("The entry '{}' does not have an ip".format(key))
+                    device_json = json.dumps(devices[key], indent=1)
+                    self.display.warning("The entry '{}' does not have an ip:\n{}".format(key, device_json))
+
         else:
             raise AnsibleError('The response from Shelly Cloud is not ok, unable to add hosts into inventory...')
