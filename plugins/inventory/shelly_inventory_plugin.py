@@ -75,7 +75,8 @@ class InventoryModule(BaseInventoryPlugin):
                 if(isinstance(devices[key].get('ip'), str)):
                     self.inventory.add_host(host=devices[key]['ip'],group=re.sub(r"[-.]", "","type_{}".format(devices[key]['type']).lower()))
                     self.inventory.add_host(host=devices[key]['ip'],group=re.sub(r"[-.]", "","gen_{}".format(devices[key]['gen'])))
-                    self.inventory.add_host(host=devices[key]['ip'],group="cloud_online_{}".format(devices[key].get('cloud_online', 'na')).lower())
+                    if 'cloud_online' in devices[key]:
+                        self.inventory.add_host(host=devices[key]['ip'],group="cloud_online_{}".format(devices[key]['cloud_online']).lower())
                     self.inventory.add_host(host=devices[key]['ip'],group=re.sub(r"[-.]", "","room_id_{}".format(devices[key]['room_id']).lower()))
                 else:
                     device_json = json.dumps(devices[key], indent=1)
