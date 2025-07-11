@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  gather_facts: False
+  connection: httpapi
+  vars:
+    ansible_host: "{{ provider.server }}"
